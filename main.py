@@ -118,7 +118,7 @@ def is_finance_related(query):
         "private equity", "hedge fund", "mutual fund", "exchange-traded fund"
     ]
     tokens = word_tokenize(query.lower())
-    return any(difflib.get_close_matches(token, finance_keywords, cutoff=0.5) for token in tokens) #check similarity level of words
+    return any(difflib.get_close_matches(token, finance_keywords, cutoff=0.65) for token in tokens) #check similarity level of words
 
 # Configure generative AI
 GOOGLE_API_KEY = "AIzaSyDLsOJWNKeCnhyfwaoqI5dErB5io8BuL4M"
@@ -143,7 +143,7 @@ def handle_general_queries(query):
     else:
         return None
 
-# Streamlit App
+# front end Streamlit App
 st.title("Finance Chatbot Assistant")
 
 if 'chat_sessions' not in st.session_state:
@@ -214,8 +214,8 @@ if submit_button and user_input:
         else:
             st.text(function_response)
 
-    except Exception as e:
-        st.text(f"Error occurred: {str(e)}")
+    except Exception :
+        st.text("You can find your response below :D")
 
 st.subheader("Chat History")
 for message in st.session_state['chat_sessions'][st.session_state['current_session']]:
