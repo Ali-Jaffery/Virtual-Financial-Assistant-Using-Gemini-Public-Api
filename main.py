@@ -118,7 +118,7 @@ def is_finance_related(query):
         "private equity", "hedge fund", "mutual fund", "exchange-traded fund"
     ]
     tokens = word_tokenize(query.lower())
-    return any(difflib.get_close_matches(token, finance_keywords, cutoff=0.65) for token in tokens) #check similarity level of words
+    return any(difflib.get_close_matches(token, finance_keywords, cutoff=0.8) for token in tokens) #check similarity level of words
 
 # Configure generative AI
 GOOGLE_API_KEY = "AIzaSyDLsOJWNKeCnhyfwaoqI5dErB5io8BuL4M"
